@@ -147,4 +147,71 @@ insert into pool_customer values(
 insert into pool_customer values(
 2,
 2,
-2)
+2);
+
+-- Add support for data export
+create table column_model(
+id                  int primary key,
+column_name         varchar(30),
+column_label        varchar(150));
+
+
+insert into column_model values(
+1,
+'addressline1',
+'Address Line 1');
+
+insert into column_model values(
+2,
+'addressline2',
+'Address Line 2');
+
+insert into column_model values(
+3,
+'city',
+'City');
+
+insert into column_model values(
+4,
+'creditLimit',
+'Credit Limit');
+
+insert into column_model values(
+5,
+'customerId',
+'Customer Id');
+
+insert into column_model values(
+6,
+'discountCode',
+'Discount Code');
+
+insert into column_model values(
+7,
+'email',
+'Email');
+
+insert into column_model values(
+8,
+'fax',
+'Fax');
+
+insert into column_model values(
+9,
+'name',
+'Name');
+
+insert into column_model values(
+10,
+'phone',
+'Phone');
+
+insert into column_model values(
+11,
+'state',
+'State');
+
+insert into column_model values(
+12,
+'zip',
+'Zip');
