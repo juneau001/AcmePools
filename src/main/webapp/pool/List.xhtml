@@ -20,13 +20,17 @@
                                  selectionMode="single" selection="#{poolController.selected}"
                                  paginator="true"
                                  rowKey="#{item.id}"
-                                 rows="10"
+                                 rows="10" widgetVar="poolTable"
                                  rowsPerPageTemplate="10,20,30,40,50"
                                  >
 
                         <p:ajax event="rowSelect"   update="createButton viewButton editButton deleteButton"/>
                         <p:ajax event="rowUnselect" update="createButton viewButton editButton deleteButton"/>
-
+                        <f:facet name="header">
+                            <p:commandButton id="toggler" type="button" value="Columns" style="float:right" icon="ui-icon-calculator" />
+                            <p:columnToggler datasource="datalist" trigger="toggler" />
+                            <div style="clear:both" />
+                        </f:facet>
                         <p:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListPoolTitle_id}"/>

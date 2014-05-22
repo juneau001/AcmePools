@@ -26,6 +26,7 @@ public class PoolController implements Serializable {
     @EJB
     private com.acme.acmepools.session.PoolFacade ejbFacade;
     private List<Pool> items = null;
+    private List<Pool> filteredPools;
     private Pool selected;
 
     public PoolController() {
@@ -119,6 +120,20 @@ public class PoolController implements Serializable {
 
     public List<Pool> getItemsAvailableSelectOne() {
         return getFacade().findAll();
+    }
+
+    /**
+     * @return the filteredPools
+     */
+    public List<Pool> getFilteredPools() {
+        return filteredPools;
+    }
+
+    /**
+     * @param filteredPools the filteredPools to set
+     */
+    public void setFilteredPools(List<Pool> filteredPools) {
+        this.filteredPools = filteredPools;
     }
 
     @FacesConverter(forClass = Pool.class)
