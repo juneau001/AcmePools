@@ -21,11 +21,13 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import lombok.Data;
 
 /**
  *
  * @author Juneau
  */
+@Data
 @Entity
 @Table(name = "MICRO_MARKET")
 @XmlRootElement
@@ -60,70 +62,9 @@ public class MicroMarket implements Serializable {
         this.zipCode = zipCode;
     }
 
-    public String getZipCode() {
-        return zipCode;
-    }
-
-    public void setZipCode(String zipCode) {
-        this.zipCode = zipCode;
-    }
-
-    public Double getRadius() {
-        return radius;
-    }
-
-    public void setRadius(Double radius) {
-        this.radius = radius;
-    }
-
-    public Double getAreaLength() {
-        return areaLength;
-    }
-
-    public void setAreaLength(Double areaLength) {
-        this.areaLength = areaLength;
-    }
-
-    public Double getAreaWidth() {
-        return areaWidth;
-    }
-
-    public void setAreaWidth(Double areaWidth) {
-        this.areaWidth = areaWidth;
-    }
-
     @XmlTransient
     public Collection<Customer> getCustomerCollection() {
         return customerCollection;
-    }
-
-    public void setCustomerCollection(Collection<Customer> customerCollection) {
-        this.customerCollection = customerCollection;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (zipCode != null ? zipCode.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof MicroMarket)) {
-            return false;
-        }
-        MicroMarket other = (MicroMarket) object;
-        if ((this.zipCode == null && other.zipCode != null) || (this.zipCode != null && !this.zipCode.equals(other.zipCode))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.acme.acmepools.entity.util.MicroMarket[ zipCode=" + zipCode + " ]";
     }
     
 }

@@ -2,8 +2,8 @@ package com.acme.acmepools.jsf;
 
 import com.acme.acmepools.entity.Pool;
 import com.acme.acmepools.session.PoolFacade;
-import com.acme.acmepools.entity.util.util.JsfUtil;
-import com.acme.acmepools.entity.util.util.JsfUtil.PersistAction;
+import com.acme.acmepools.entity.util.JsfUtil;
+import com.acme.acmepools.entity.util.JsfUtil.PersistAction;
 
 import java.io.Serializable;
 import java.util.List;

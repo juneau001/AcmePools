@@ -2,10 +2,11 @@ package com.acme.acmepools.jsf;
 
 import com.acme.acmepools.entity.Job;
 import com.acme.acmepools.session.JobFacade;
-import com.acme.acmepools.entity.util.util.JsfUtil;
-import com.acme.acmepools.entity.util.util.JsfUtil.PersistAction;
+import com.acme.acmepools.entity.util.JsfUtil;
+import com.acme.acmepools.entity.util.JsfUtil.PersistAction;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;

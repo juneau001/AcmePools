@@ -1,14 +1,13 @@
 package com.acme.acmepools.jsf;
 
 import com.acme.acmepools.entity.Customer;
-import com.acme.acmepools.entity.util.util.JsfUtil;
-import com.acme.acmepools.entity.util.util.JsfUtil.PersistAction;
+import com.acme.acmepools.entity.util.JsfUtil;
+import com.acme.acmepools.entity.util.JsfUtil.PersistAction;
 import com.acme.acmepools.session.CustomerFacade;
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.ejb.EJB;
 import javax.ejb.EJBException;
 import javax.enterprise.context.SessionScoped;
@@ -18,27 +17,24 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.FacesConverter;
 import javax.inject.Named;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.extern.log4j.Log4j2;
 import org.primefaces.component.datatable.DataTable;
 import org.primefaces.event.CellEditEvent;
 
 @Named("customerController")
 @SessionScoped
+@Log4j2
 public class CustomerController implements Serializable {
 
     @EJB
     private com.acme.acmepools.session.CustomerFacade ejbFacade;
     private List<Customer> items = null;
+    @Getter @Setter
     private Customer selected;
 
     public CustomerController() {
-    }
-
-    public Customer getSelected() {
-        return selected;
-    }
-
-    public void setSelected(Customer selected) {
-        this.selected = selected;
     }
 
     protected void setEmbeddableKeys() {
@@ -105,7 +101,7 @@ public class CustomerController implements Serializable {
                     JsfUtil.addErrorMessage(ex, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
                 }
             } catch (Exception ex) {
-                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, null, ex);
+                log.error(ex);
                 JsfUtil.addErrorMessage(ex, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
             }
         }
@@ -157,7 +153,7 @@ public class CustomerController implements Serializable {
                 Customer o = (Customer) object;
                 return getStringKey(o.getCustomerId());
             } else {
-                Logger.getLogger(this.getClass().getName()).log(Level.SEVERE, "object {0} is of type {1}; expected type: {2}", new Object[]{object, object.getClass().getName(), Customer.class.getName()});
+                log.error("object {0} is of type {1}; expected type: {2}");
                 return null;
             }
         }
@@ -177,4 +173,13 @@ public class CustomerController implements Serializable {
             }
         }
 
+    public String loadCustomer() {
+        Map requestMap = FacesContext.getCurrentInstance().
+                getExternalContext().getRequestParameterMap();
+        String customer = (String) requestMap.get("customer");
+        selected = ejbFacade.find(Integer.valueOf(customer));
+        return "customerInfo";
+    }
+    
+    
 }

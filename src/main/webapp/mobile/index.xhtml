@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:pm="http://primefaces.org/mobile"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+    <f:view renderKitId="PRIMEFACES_MOBILE">
+        <h:head></h:head>
+        <h:body>
+            <pm:page id="customerListing">
+                <pm:header>
+                    Acme Pools
+                </pm:header>
+                <pm:content>
+                    <h:form id="indexForm">
+                        <p:panel header="Acme Pools Customer Listing">
+                            <p:dataList id="datalist" value="#{customerController.items}"
+                                        var="item"    
+                                        paginator="true"
+                                        pt:data-role="listview" pt:data-filter="true"
+                                        rows="10"
+                                        rowsPerPageTemplate="10,20,30,40,50"
+                                        >
+                                
+                                <p:commandLink action="#{customerController.loadCustomer}">
+                                    <f:param name="customer" value="#{item.customerId}"/>
+                                    <h:panelGroup>
+
+                                        <h:outputText value="#{item.customerId} - #{item.name}"/>
+
+                                        <br/>
+                                        <h:outputText value="#{item.email}"/>
+
+
+                                    </h:panelGroup>
+                                </p:commandLink>
+                            </p:dataList>
+                        </p:panel>
+                    </h:form>
+                </pm:content>
+                <pm:footer>
+                    Author: Josh Juneau
+                </pm:footer>
+            </pm:page>
+ 
+        </h:body>
+    </f:view>
+</html>
+

@@ -12,11 +12,15 @@ package com.acme.acmepools.bean;
 import java.util.ArrayList;
 import java.util.List;
 import com.acme.acmepools.entity.ColumnModel;
+import lombok.Getter;
+import lombok.Setter;
 
 import org.primefaces.model.DualListModel;
 
 public class PickListBean {
 
+    @Getter
+    @Setter
     private DualListModel<ColumnBean> columns;
 
     private List<ColumnBean> source = null;
@@ -39,13 +43,7 @@ public class PickListBean {
 
     }
 
-    public DualListModel<ColumnBean> getColumns() {
-        return columns;
-    }
-
-    public void setColumns(DualListModel<ColumnBean> columns) {
-        this.columns = columns;
-    }
+    
 
    
 }

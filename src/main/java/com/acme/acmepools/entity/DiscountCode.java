@@ -22,11 +22,13 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
+import lombok.Data;
 
 /**
  *
  * @author Juneau
  */
+@Data
 @Entity
 @Table(name = "DISCOUNT_CODE")
 @XmlRootElement
@@ -55,54 +57,8 @@ public class DiscountCode implements Serializable {
         this.discountCode = discountCode;
     }
 
-    public String getDiscountCode() {
-        return discountCode;
-    }
-
-    public void setDiscountCode(String discountCode) {
-        this.discountCode = discountCode;
-    }
-
-    public BigDecimal getRate() {
-        return rate;
-    }
-
-    public void setRate(BigDecimal rate) {
-        this.rate = rate;
-    }
-
     @XmlTransient
     public Collection<Customer> getCustomerCollection() {
         return customerCollection;
-    }
-
-    public void setCustomerCollection(Collection<Customer> customerCollection) {
-        this.customerCollection = customerCollection;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (discountCode != null ? discountCode.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof DiscountCode)) {
-            return false;
-        }
-        DiscountCode other = (DiscountCode) object;
-        if ((this.discountCode == null && other.discountCode != null) || (this.discountCode != null && !this.discountCode.equals(other.discountCode))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.acme.acmepools.entity.util.DiscountCode[ discountCode=" + discountCode + " ]";
-    }
-    
+    }  
 }

@@ -19,11 +19,13 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
+import lombok.Data;
 
 /**
  *
  * @author Juneau
  */
+@Data
 @Entity
 @Table(name = "JOB")
 @XmlRootElement
@@ -57,70 +59,5 @@ public class Job implements Serializable {
     public Job(Integer id) {
         this.id = id;
     }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Double getEstHours() {
-        return estHours;
-    }
-
-    public void setEstHours(Double estHours) {
-        this.estHours = estHours;
-    }
-
-    public Integer getCost() {
-        return cost;
-    }
-
-    public void setCost(Integer cost) {
-        this.cost = cost;
-    }
-
-    public PoolCustomer getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(PoolCustomer customerId) {
-        this.customerId = customerId;
-    }
-
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Job)) {
-            return false;
-        }
-        Job other = (Job) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.acme.acmepools.entity.util.Job[ id=" + id + " ]";
-    }
-    
+ 
 }
